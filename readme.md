@@ -1,7 +1,7 @@
 PPTP Admin
 =========
 
-PPTP Admin is a webbased user management system written with python
+PPTP Admin is a web based VPN user management system written with python
 
 Version
 ----

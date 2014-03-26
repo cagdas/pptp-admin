@@ -1,4 +1,4 @@
-__author__ = 'cagdas'
+__author__ = 'Cagdas Emek'
 import time
 import BaseHTTPServer
 import logging
