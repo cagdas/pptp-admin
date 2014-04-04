@@ -5,7 +5,7 @@ import logging
 import cgi
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 
-CHAP_SECRETS = "./chap-secrets"
+CHAP_SECRETS = "/etc/ppp/chap-secrets"
 
 HOST_NAME = ""  # !!!REMEMBER TO CHANGE THIS!!!
 PORT_NUMBER = 8000  # Maybe set this to 9000.
