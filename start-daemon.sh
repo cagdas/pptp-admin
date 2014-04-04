@@ -22,6 +22,7 @@ else
 	if [ -e /proc/$pid -a /proc/$pid/exe ]; then
 		echo "[ $pid ] Service has already started."
 	else
+	    rm /var/run/pptp-admin.pid
 		echo "[ $pid ] Service stopped."
 	fi
 fi	
