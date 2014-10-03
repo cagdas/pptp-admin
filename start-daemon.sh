@@ -13,7 +13,7 @@ fi
 PID_FILE="/var/run/pptp-admin.pid"
 
 if [ ! -r $PID_FILE ]; then
-	/usr/bin/python server.py 1> logs/requests.log 2> logs/errors.log &
+	/usr/bin/python server.py start 1> logs/requests.log 2> logs/errors.log &
 	pid=$!
 	echo $pid > $PID_FILE
 else
