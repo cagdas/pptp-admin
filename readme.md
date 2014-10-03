@@ -9,7 +9,7 @@ Just run start-deamon.sh with root privilege and use it no more configuration.
 
 Features
 -----------
-* You see and list all accounts.
+* You can list all accounts.
 * You can create a new account.
 
 Version

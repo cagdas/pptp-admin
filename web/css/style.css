@@ -1,0 +1,90 @@
+html, body 
+{
+	margin:0;
+	padding:0;
+	color: #444;
+	background: #FBF6F4;
+}
+
+.button {
+  border-radius: 5px;
+  background: #efefef;
+  background-image: -moz-linear-gradient(#FCFCFC, #EFEFEF);
+  background-image: -webkit-linear-gradient(#FCFCFC, #EFEFEF);
+  background-image: -ms-linear-gradient(#FCFCFC, #EFEFEF);
+  background-image: linear-gradient(#FCFCFC, #EFEFEF);
+  border: 1px solid #DDDDDD;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
+  padding: 8px 16px;
+  text-shadow: 0 1px 0 #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: .5em;
+}
+
+.button:hover, .button:focus, input[type="text"]:focus {
+  outline: none;
+  border: 1px solid rgba(255,0,0,.5);
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 0 10px rgba(255,0,0,.3);
+}
+
+a {
+  color: #c00;
+  text-decoration: none;
+  border-bottom: 1px solid #eee;
+}
+fieldset {
+	border:none; 
+	padding:10px 0; 
+	margin:0; 
+	position:relative
+}
+
+label { 
+	position: absolute;
+	width: 70px;
+	top: 18px;
+	left: 5px;
+	font-size: 90%;
+	color: #555;
+}
+
+input[type="text"] { 
+	border: 1px solid #999;
+	padding: 8px 5px 8px 80px;
+	background: #FFF;
+	width: 250px;
+}
+.table  {
+width: 100%
+border: 1px solid #B0B0B0;
+}
+.table  tbody {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: baseline;
+background: transparent;
+}
+.table  thead {
+text-align: left;
+}
+.table  thead th {
+background: -moz-linear-gradient(top, #F0F0F0 0, #DBDBDB 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);
+border: 1px solid #B0B0B0;
+color: #444;
+font-size: 16px;
+font-weight: bold;
+padding: 3px 10px;
+}
+.table  td {
+padding: 3px 10px;
+}
+.table tr:nth-child(even) {
+background: #F2F2F2;
+}
