@@ -12,8 +12,6 @@ themePath = workingPath + '/'
 CHAP_SECRETS = "/etc/ppp/chap-secrets"
 
 server = WebServer(HOST_NAME, PORT_NUMBER )
-#server.setThemePath( themePath )
-#server.setWorkingPath( workingPath )
 server.setChapSecretFile(CHAP_SECRETS)
 
 if __name__ == '__main__':
