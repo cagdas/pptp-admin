@@ -1,9 +1,6 @@
-from matplotlib.pyplot import switch_backend
-
 __author__ = 'Cagdas Emek'
 
 from classes.http.server.webserver import WebServer
-
 import sys
 import os
 
