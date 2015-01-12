@@ -9,7 +9,7 @@ class Handler(SimpleHTTPRequestHandler):
     themePath = ''
     chap_secret_file = ''
     user_list = []
-    user_manager = Users
+    user_manager = Users(self.chap_secret_file)
 
     def __init__(self, request, client_address, server):
         self.user_manager = Users(self.chap_secret_file)
