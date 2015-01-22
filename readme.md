@@ -1,4 +1,4 @@
-[<img src="https://travis-ci.org/cagdas/pptp-admin.svg?branch=master" alt="Build Status" />](https://travis-ci.org/cagdas/pptp-admin)
+[<img src="https://travis-ci.org/cagdas/pptp-admin.svg?branch=master" alt="Build Status" />](https://travis-ci.org/cagdas/pptp-admin) <img src="https://img.shields.io/badge/turk-malı-red.svg?style=flat-square" alt="Made in Ankara" />
 
 PPTP Admin
 =========
