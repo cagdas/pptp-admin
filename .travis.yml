@@ -3,16 +3,12 @@ python:
     - 2.7
 
 before_script:
-    - sudo su
-    - mkdir -p /etc/ppp/
-    - echo -e "test\t*\t12345\t*" >> /etc/ppp/chap-secrets
-    - exit 
+    - sudo mkdir -p /etc/ppp/
+    - sudo touch /etc/ppp/chap-secrets
 
 script: 
     - sudo python server.py start > /dev/stdout &
-    - curl http://0.0.0.0:8000/ 
-    - curl http://0.0.0.0:8000/create
-    - curl http://0.0.0.0:8000/users
-
-after_script:
-    - rm /etc/ppp/chap-secrets
+    - curl -v http://0.0.0.0:8000/ 
+    - curl -v http://0.0.0.0:8000/create 
+    - curl -v http://0.0.0.0:8000/users
+    - curl -v --data "_username=test&_password=test&_server=*&_ip=*" http://0.0.0.0:8000/add-user 
