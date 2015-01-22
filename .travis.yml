@@ -2,8 +2,14 @@ language: python
 python:
     - 2.7
 
+before_script:
+    - touch /etc/ppp/chap-secrets
+    - echo -e "a\t1\t2\t4" >> /etc/ppp/chap-secrets
+
 script: 
     - python server.py start > /dev/stdout &
     - curl http://0.0.0.0:8000/ 
     - curl http://0.0.0.0:8000/create
     - curl http://0.0.0.0:8000/users
+after_script:
+    - rm /etc/ppp/chap-secrets
