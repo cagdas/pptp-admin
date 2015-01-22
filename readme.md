@@ -1,3 +1,5 @@
+<img src="https://travis-ci.org/cagdas/pptp-admin.svg?branch=master" alt="Build Status" />
+
 PPTP Admin
 =========
 
@@ -24,3 +26,4 @@ You need Python 2.7.5+ or above.
 License
 ----
 MIT
+
