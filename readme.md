@@ -1,4 +1,4 @@
-<img src="https://travis-ci.org/cagdas/pptp-admin.svg?branch=master" alt="Build Status" />
+[<img src="https://travis-ci.org/cagdas/pptp-admin.svg?branch=master" alt="Build Status" />](https://travis-ci.org/cagdas/pptp-admin)
 
 PPTP Admin
 =========
