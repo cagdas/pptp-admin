@@ -11,10 +11,11 @@ Features
 -----------
 * You can list all accounts.
 * You can create a new account.
+* You can delete an account.
 
 Version
 -------
-0.2
+0.3
 
 Installation
 --------------

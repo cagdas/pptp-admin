@@ -54,11 +54,21 @@ input[type="text"] {
 	border: 1px solid #999;
 	padding: 8px 5px 8px 80px;
 	background: #FFF;
-	width: 250px;
+	min-width: 250px;
+  width: 90%;
 }
-.table  {
-width: 100%
+.grid .unit
+{
+  padding: 0px;
+  margin: 0px;
+  max-width: 480px;
+  width : 100%;
+}
+.table  
+{
+width: 100%;
 border: 1px solid #B0B0B0;
+border-spacing: 0;
 }
 .table  tbody {
 margin: 0;
@@ -76,11 +86,12 @@ text-align: left;
 background: -moz-linear-gradient(top, #F0F0F0 0, #DBDBDB 100%);
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #F0F0F0), color-stop(100%, #DBDBDB));
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#F0F0F0', endColorstr='#DBDBDB', GradientType=0);
-border: 1px solid #B0B0B0;
+border-bottom: 1px solid #B0B0B0;
 color: #444;
 font-size: 16px;
 font-weight: bold;
 padding: 3px 10px;
+text-align: center;
 }
 .table  td {
 padding: 3px 10px;

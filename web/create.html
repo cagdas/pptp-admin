@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
     <title>Homepage | PPTP-Admin • a simple VPN user management service</title>
     <link rel="stylesheet" href="./css/gridism.css">
     <link rel="stylesheet" href="./css/style.css">
@@ -20,17 +20,25 @@
 </div>
 
 <div class="grid">
-  <div class="unit whole center-on-mobiles">
+  <div class="unit whole align-center center-on-mobiles">
     <h2>Create a new user</h2>
       <p>
          <form action="/add-user" method="post">
             <fieldset>
                 <label for="_username">Username</label>
-                <input id="_username" name="username" type="text" />
+                <input id="_username" name="_username" type="text" />
             </fieldset>
             <fieldset>
                 <label for="_password">Password</label>
-                <input id="_password" name="password" type="text" />
+                <input id="_password" name="_password" type="text" />
+            </fieldset>
+            <fieldset>
+                <label for="_username">*Server</label>
+                <input id="_username" name="_server" type="text"  value="*" />
+            </fieldset>
+            <fieldset>
+                <label for="_password">*IP</label>
+                <input id="_password" name="_ip" type="text" value="*" />
             </fieldset>
             <fieldset>
                 <input id="" class="button" value="Create" type="submit" />

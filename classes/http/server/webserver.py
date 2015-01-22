@@ -25,11 +25,10 @@ class WebServer():
         except:
             pass
 
-    def __init__(self, hostname, port):
-
+    def __init__(self, hostname, port, chap_secret_file):
         Handler.themePath = os.path.dirname(os.path.abspath(__file__)) + "/../../../";
-        Handler.chap_secret_file  = self.__chap_secret_file
-
+        Handler.chap_secret_file = chap_secret_file
+        
         self.__hostname = hostname
         self.__port = port
         self.__httpserver = BaseHTTPServer.HTTPServer
@@ -41,7 +40,4 @@ class WebServer():
     def setThemePath(self, path):
         self.__themePath = path
         Handler.themePath = self.__themePath
-
-    def setChapSecretFile(self, path):
-        self.__chap_secret_file = path
-        Handler.chap_secret_file = self.__chap_secret_file
+ 

@@ -4,15 +4,14 @@ from classes.http.server.webserver import WebServer
 import sys
 import os
 
-HOST_NAME = "localhost"  # !!!DON'T FORGET TO CHANGE THIS!!!
-PORT_NUMBER = 8000  # Maybe set this to 9000.
+HOST_NAME = "0.0.0.0"  # ip address
+PORT_NUMBER = 8000  # port number
 
 workingPath = os.path.dirname(os.path.abspath(__file__))
 themePath = workingPath + '/'
 CHAP_SECRETS = "/etc/ppp/chap-secrets"
 
-server = WebServer(HOST_NAME, PORT_NUMBER )
-server.setChapSecretFile(CHAP_SECRETS)
+server = WebServer(HOST_NAME, PORT_NUMBER, CHAP_SECRETS ) 
 
 if __name__ == '__main__':
     try:

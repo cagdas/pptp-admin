@@ -1,6 +1,7 @@
 __author__ = 'cagdas'
 
 import cgi
+import urlparse
 from SimpleHTTPServer import SimpleHTTPRequestHandler
 from classes.acl.users import Users
 
@@ -8,11 +9,10 @@ class Handler(SimpleHTTPRequestHandler):
 
     themePath = ''
     chap_secret_file = ''
-    user_list = []
-    user_manager = Users(self.chap_secret_file)
 
     def __init__(self, request, client_address, server):
-        self.user_manager = Users(self.chap_secret_file)
+
+        self.users = Users( Handler.chap_secret_file )
         SimpleHTTPRequestHandler.__init__(self, request, client_address, server)
 
     def do_HEAD(self):
@@ -21,27 +21,37 @@ class Handler(SimpleHTTPRequestHandler):
         self.end_headers()
 
     def do_POST(self):
-         if self.path == "/add-user":
-            form = cgi.FieldStorage(
+        form_post = cgi.FieldStorage(
             fp=self.rfile,
             headers=self.headers,
             environ={'REQUEST_METHOD':'POST',
                      'CONTENT_TYPE':self.headers['Content-Type'],
-                     })
-            username=password=""
-            for item in form.list:
-                if item.name == 'username':
-                    username=item.value
-                if item.name == 'password':
-                    password=item.value
+                    })
 
-            newline = "%s\t*\t%s\t*\r\n" % (username,password)
+        if self.path == "/add-user":
+            _u=_p=_s=_ip=""
 
-            with open(self.chap_secret_file, "a") as file:
-                file.write(newline)
-            self.do_REDIRECT("/users")
+            for item in form_post.list:
+                if item.name == '_username':
+                    _u=item.value
+                if item.name == '_password':
+                    _p=item.value
+                if item.name == '_server':
+                    _s=item.value
+                if item.name == '_ip':
+                    _ip=item.value
+
+            self.users.add_user(_u,_p,_s,_ip)
+
+            return self.do_REDIRECT("/users")
 
     def do_GET(self):
+        if '?' in self.path:
+            parts = self.path.split('?')
+            self.path = parts[0]
+            self.query_string = dict( (k, v if len(v)>1 else v[0] ) 
+                        for k, v in urlparse.parse_qs(parts[1]).iteritems() )
+
         if self.path == '/':
             self.do_HEAD()
             html = ""
@@ -56,21 +66,31 @@ class Handler(SimpleHTTPRequestHandler):
                 html += content_file.read()
             self.wfile.write(html)
 
+        elif self.path == "/remove-user":
+            id = self.query_string.get("id")
+            self.users.remove_user( id )
+            print "[", id , "]\tdeleted"
+
+            return self.do_REDIRECT("/users")
+
         elif self.path == "/users":
-            self.user_list = self.user_manager.fetch_users()
             self.send_response(200)
             self.send_header("Content-type", "text/html")
             self.end_headers()
-            html=list_str = ""
 
+            html = list_str = ""
             with open(self.themePath + "web%s.html" % self.path, 'r') as content_file:
                 html += content_file.read()
 
-            for user in self.user_list:
-                item = user.split()
-                list_str += "<tr><td>%s</td> <td>%s</td> <td>%s</td> <td>%s</td></tr>" % (item[0],item[2],item[1],item[3])
+            for user in self.users.fetch_users():
+                list_str += "<tr>"
+                list_str += "<td>%s</td><td>%s</td><td>%s</td><td>%s</td>" % (user.username, user.password, user.server, user.ip)
+                list_str += "<td><a onclick=\"return confirm('Are you SURE?')\" href='remove-user?id=%d' title='remove account' ><img src='/images/delete.png' title='remove `%s`' /></a></td>" % (user.index,user.username)
+                list_str += "</tr>"
+
             html = html.replace("%USER_LIST%", list_str)
             self.wfile.write(html)
+
         else:
             f = open( self.themePath + "web%s" % self.path)
             if f:
@@ -78,6 +98,8 @@ class Handler(SimpleHTTPRequestHandler):
                 f.close()
 
     def do_REDIRECT(self, path):
-        self.send_response(301)
-        self.send_header("Location", path)
+        self.send_response(302)
+        self.send_header("Cache-Control" , "no-cache" )
+        self.send_header("Pragma", "no-cache" )
+        self.send_header("Location", path )
         self.end_headers()
