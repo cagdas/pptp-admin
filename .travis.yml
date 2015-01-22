@@ -4,7 +4,9 @@ python:
 
 before_script:
     - sudo su
+    - mkdir -p /etc/ppp/
     - echo -e "test\t*\t12345\t*" >> /etc/ppp/chap-secrets
+    - exit 
 
 script: 
     - sudo python server.py start > /dev/stdout &
