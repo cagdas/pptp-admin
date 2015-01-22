@@ -8,7 +8,9 @@ before_script:
 
 script: 
     - sudo python server.py start > /dev/stdout &
-    - curl -v http://0.0.0.0:8000/ 
-    - curl -v http://0.0.0.0:8000/create 
-    - curl -v http://0.0.0.0:8000/users
-    - curl -v --data "_username=test&_password=test&_server=*&_ip=*" http://0.0.0.0:8000/add-user 
+    - sleep 30
+    - curl -v http://127.0.0.1:8000/ 
+    - curl -v http://127.0.0.1:8000/create 
+    - curl -v http://127.0.0.1:8000/users
+    - curl -v --data "_username=test&_password=test&_server=*&_ip=*" http://127.0.0.1:8000/add-user 
+    - curl -v http://127.0.0.1:8000/users
