@@ -2,4 +2,8 @@ language: python
 python:
     - 2.7
 
-script: python server.py start
+script: 
+    - python server.py start
+    - curl http://0.0.0.0:8000/ 
+    - curl http://0.0.0.0:8000/create
+    - curl http://0.0.0.0:8000/users
